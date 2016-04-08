@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sparePartsReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="25692a8b-2216-4222-b5a8-caae9c80672d">
+	<property name="ireport.zoom" value="1.5026296018031553"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT `Part_Name`,sparepartstock.code,`Manufacturer`,`Vehicle_Type`,`Year`,`Price`,`Inital_Stock_Level`,`Inital_Stock_Cost`,`Used`,`Quantity` AS `Delivery`,`Stock_Level`,sparepartstock.Stock_Cost,`Threshold_Level`
+FROM sparepartstock
+LEFT JOIN sparepartdelivery
+ON sparepartstock.Code=sparepartdelivery.Code
+LEFT JOIN sparepartused
+on sparepartstock.code=sparepartused.Code]]>
+	</queryString>
+	<field name="Part_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="code" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Manufacturer" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Vehicle_Type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Year" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Price" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Inital_Stock_Level" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Inital_Stock_Cost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Used" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Delivery" class="java.lang.Integer"/>
+	<field name="Stock_Level" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Stock_Cost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Threshold_Level" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupFooter>
+			<band height="44"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="68" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="a5584186-279c-4c7a-857e-19b014977453"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="42" y="68" width="331" height="24" uuid="83e31751-1429-40e5-89cc-7f2162c928d4"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Spare Parts Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="68" uuid="0da03561-40a5-48ef-a3a6-7cf3890f6615"/>
+				<text><![CDATA[Quick Fix Fitters,
+19 High St.,
+Ashford,
+Kent,
+CT16 8YY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="71" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="70" width="555" height="1" uuid="2c903390-9a01-4a12-aa72-c354d631524a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="046dfc16-51dd-462d-bb00-936f15430edc"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Part Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="42" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="76cd1aac-fdf5-4f05-ad66-679ca1ae702b"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="84" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="83adc116-99d7-4c8a-af24-7abac2895298"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Manufacturer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="126" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="1eb206d8-5535-43d7-a71b-f6f933e08389"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Vehicle Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="168" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="86e821c8-1a4f-4852-b044-cb96b69a4e9d"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="210" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="009dfacf-9ece-42ea-956e-919a4d22bcc4"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="252" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="028d4f3d-6a13-4598-8e88-6a35304aa7a5"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Inital Stock Level]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="294" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="4fad0de9-dead-4822-aa78-3821f9b11697"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Inital Stock Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="336" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="59c93143-52b1-4018-8ff9-25c2152d10c7"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Used]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="378" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="358c22b2-b928-4fe9-ab95-c01cbfeea13a"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Delivery]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="420" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="f9896242-a400-4c90-8297-0083ea0ed704"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Stock Level]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="462" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="e353c859-3c1f-4fa2-90eb-a231f48e2a08"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Stock Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="504" y="0" width="42" height="65" isPrintWhenDetailOverflows="true" uuid="20c5ff3f-ce0b-4953-be24-a9b42b5d76fc"/>
+				<textElement rotation="Left"/>
+				<text><![CDATA[Threshold Level]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="31" width="555" height="1" uuid="8d31cbab-9b4b-4851-95b1-74d737396f03"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="fb1a8c92-c954-4139-a388-14f6df2d8a9c"/>
+				<textFieldExpression><![CDATA[$F{Part_Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="42" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="be0759c2-b355-4740-a0f2-d330fa30af7a"/>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="84" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="78d165a6-3d25-4e33-9154-62ea207a16c2"/>
+				<textFieldExpression><![CDATA[$F{Manufacturer}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="126" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="d2f4c126-4a87-428b-bcaa-5f8b6c3c2af9"/>
+				<textFieldExpression><![CDATA[$F{Vehicle_Type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="168" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="cf03717f-69cc-492a-a53a-f53843879882"/>
+				<textFieldExpression><![CDATA[$F{Year}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="210" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="7d2bc7d1-0b90-40ad-9238-3705f3895053"/>
+				<textFieldExpression><![CDATA[$F{Price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="252" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="d2fd75f4-af14-4bf3-8729-20319d04ba50"/>
+				<textFieldExpression><![CDATA[$F{Inital_Stock_Level}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="294" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="0df811c5-ea64-423f-af5b-62e7a23568c6"/>
+				<textFieldExpression><![CDATA[$F{Inital_Stock_Cost}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="336" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="8d1112f7-1d90-4924-894b-ab35713ba5d0"/>
+				<textFieldExpression><![CDATA[($F{Used} != null) ? $F{Used} : "0"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="378" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="70515ead-7bf2-4d4b-872f-94b0f17f4680"/>
+				<textFieldExpression><![CDATA[($F{Delivery} != null) ? $F{Delivery} : "0"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="420" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="2153edbc-c2ff-4ce5-ba02-7d586c6571c4"/>
+				<textFieldExpression><![CDATA[$F{Stock_Level}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="462" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="370664c5-8729-4781-ab19-98b9096b5ddb"/>
+				<textFieldExpression><![CDATA[$F{Stock_Cost}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="504" y="0" width="42" height="20" isPrintWhenDetailOverflows="true" uuid="6200c509-40b1-4e98-9478-d9a5d6b6a977"/>
+				<textFieldExpression><![CDATA[$F{Threshold_Level}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="5627404d-9aa4-4ab3-a259-aa45db1d5a01"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="a63127de-a4a2-45bc-a336-8f9da50cf2ce"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="f3d06b23-43cf-42d6-bad4-d124a9df20f6"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="6686ad83-faf3-4342-9f92-7df1ad13f93d"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

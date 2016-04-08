@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="a0779751-53d3-4b72-8e6f-5da47ed0e8ba">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Wolf\\Documents\\IReport\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="jobID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM jobs]]>
+	</queryString>
+	<field name="JobID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RegNo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Work_Required" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="JobStatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BusinessType" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Duration" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Date_creation" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<subreport>
+				<reportElement x="32" y="0" width="190" height="120" uuid="6d4df047-8281-4091-8afe-99d748bcf88e"/>
+				<subreportParameter name="jobID">
+					<subreportParameterExpression><![CDATA[$P{jobID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Invoice_customersDetail.jasper"]]></subreportExpression>
+			</subreport>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="455" y="67" width="100" height="20" uuid="bf59a1d9-3a2d-42cf-bf68-00f65b04665f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="67" uuid="2a50f0f3-99b4-4230-91e0-627e83c78d79"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Quick Fix Fitters,
+19 High St.,
+Ashford,
+Kent,
+CT16 8YY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement x="32" y="0" width="190" height="59" uuid="f70dd919-728c-4d84-85be-2f7ba5b7bdf5"/>
+				<subreportParameter name="jobID">
+					<subreportParameterExpression><![CDATA[$P{jobID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Invoice_vehicleDetails.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="32" y="0" width="100" height="20" uuid="e0ce4908-89e5-4363-b30b-563c0450b5ff"/>
+				<text><![CDATA[Description of Work:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="32" y="20" width="200" height="23" uuid="26cea5c5-f2b1-442f-9720-3946376d9961"/>
+				<subreportParameter name="jobID">
+					<subreportParameterExpression><![CDATA[$P{jobID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Invoice_workDetails.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="157" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==1]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="416" height="42" uuid="185e8b12-4dc2-49ef-ab98-55caf6055eb8"/>
+				<subreportParameter name="jobID">
+					<subreportParameterExpression><![CDATA[$P{jobID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Invoice_stockUsed.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="73" width="416" height="32" uuid="c93e970a-e919-493c-a381-0d01992931ac"/>
+				<subreportParameter name="jobID">
+					<subreportParameterExpression><![CDATA[$P{jobID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Invoice_labourCost.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="162" y="105" width="143" height="24" uuid="1ff6c889-113c-45bf-9d30-f26ac5aa341a"/>
+				<subreportParameter name="jobID">
+					<subreportParameterExpression><![CDATA[$P{jobID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Invoice_total.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="32" y="49" width="100" height="20" uuid="53711e93-7bb4-4c98-b5a5-b1907e8ce603"/>
+				<text><![CDATA[Yours sincerely,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="69" width="100" height="20" uuid="863b05c8-a7d5-4889-b67e-c0a781a49986"/>
+				<text><![CDATA[G. Lancaster]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="0" width="455" height="20" uuid="a78c5bec-4099-4103-bdc2-cac5710fabe6"/>
+				<text><![CDATA[Thank you for your valued custom. We look forward to receiving your payment in due course]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

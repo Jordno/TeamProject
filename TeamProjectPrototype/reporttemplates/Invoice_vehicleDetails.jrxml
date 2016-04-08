@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoice_vehicleDetails" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6fd504ac-355d-474d-a609-cae6ae7f78d3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="jobID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT jobs.RegNo,`Make`,`Model` FROM `jobs`
+INNER JOIN vehicles ON vehicles.RegNo = jobs.RegNo
+WHERE JobID = $P{jobID}]]>
+	</queryString>
+	<field name="RegNo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Make" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Model" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="124" height="20" uuid="359bb7ba-d0c4-4708-9e7b-f9ecc79c81dc"/>
+				<text><![CDATA[Vehicle Registration No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="36" height="20" uuid="dadb242b-dee8-44b6-a89e-1edcc3151ef2"/>
+				<text><![CDATA[Make:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="36" height="20" uuid="203484c3-574a-4d4b-8d44-06c9fd5d3ff8"/>
+				<text><![CDATA[Model:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="124" y="0" width="100" height="20" uuid="2a99c199-3f4e-43a4-858b-3ea76ed148cb"/>
+				<textFieldExpression><![CDATA[$F{RegNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="20" width="100" height="20" uuid="e618ae67-7a69-43df-a148-f2075d10c65f"/>
+				<textFieldExpression><![CDATA[$F{Make}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="40" width="100" height="20" uuid="19e3a0ae-7378-4db3-9cfe-03abdcedb895"/>
+				<textFieldExpression><![CDATA[$F{Model}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
